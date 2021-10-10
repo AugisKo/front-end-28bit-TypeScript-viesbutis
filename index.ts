@@ -67,7 +67,13 @@ class Hotel {
     this.rooms.push(room);
   }
 
-  private printRooms(minComfort?: number): void {}
+  private printRooms(miniComfort?: number): void {
+    for (let room of this.rooms) {
+      if (room.comfort > miniComfort) {
+        room.printData();
+      }
+    }
+  }
 
   //Metodas, spausdinantis pagrindinę informaciją apie viešbutį
   public printData(onlyComfort?: boolean): void {
@@ -75,7 +81,11 @@ class Hotel {
     console.log('Our address:', this.address);
     console.log('Our hotel has', this.stars, 'stars');
     console.log('In our hotel we have', this.rooms.length, 'rooms');
-    console.log('-------------------------');
+    if (onlyComfort === true) {
+      console.log(this.printRooms(15));
+    } else {
+      console.log(this.printRooms(0));
+    }
   }
 }
 
@@ -96,12 +106,13 @@ class Room {
     return parseFloat((this.size / this.capacity).toFixed(2));
   }
 
-  public printData(): void {
+  public printData(confortString: string = 'Comfort level: '): void {
+    console.log('-------------------------');
+    console.log('<<Room>>');
     console.log('Room number', this.roomNumber + 1);
     console.log('Room size: ', this.size);
     console.log('Places in the room: ', this.capacity);
-    console.log('Comfort level: ', this.comfort);
-    console.log('-------------------------');
+    console.log(confortString, this.comfort);
   }
 }
 
@@ -125,14 +136,9 @@ class Spa extends Room {
   }
 
   public printData(): void {
-    super.printData();
-    console.log('Room number', this.roomNumber + 1);
-    console.log('Room size:', this.size);
-    console.log('Room capacity:', this.capacity);
-    console.log('Spa comfort level:', this.comfort);
+    super.printData('SPA confort level:');
     console.log('Spa poole size', this.poolSize);
     console.log('Spa pool temperature', this.poolTemperature);
-    console.log('-------------------------');
   }
 }
 
@@ -147,7 +153,10 @@ hotel1.addRoom(room2);
 const spa1 = new Spa(45, 3, 25, 24);
 hotel1.addRoom(spa1);
 
-hotel1.printData();
+hotel1.printData(false);
+
+/*
 room1.printData();
 room2.printData();
 spa1.printData();
+*/
