@@ -107,11 +107,10 @@ class Hotel {
     console.log('Welcome to', this.name);
     spausdintiHead('Welcome to ' + this.name, 'h1');
     console.log('Our address:', this.address);
-    spausdinti('Our address: ' + this.address);
-    console.log('Our hotel has', this.stars, 'stars');
-    spausdinti('Our hotel has ' + this.stars + ' stars.');
+    spausdintiHead(this.address);
+    console.log(this.stars, 'stars');
+    spausdintiHead('Our hotel has ' + this.stars + ' stars.');
     console.log('In our hotel we have', this.rooms.length, 'rooms');
-    spausdinti('In our hotel we have ' + this.rooms.length + ' rooms.');
 
     /* if salyga, kuri atspausdina visus kambarius (this.printRooms(0)) ar tik tuos, kurie yra aukstesnes komforto klases nei nurodyta kintamajame this.setComfort ir imestame i (this.printRooms(this.setComfort)). Si klase ijungiama kai onlyComfort yra True.*/
 
@@ -124,7 +123,7 @@ class Hotel {
       );
       spausdinti(
         'Below you will find the list of our most comfortable rooms:',
-        'h3'
+        'h4'
       );
       this.printRooms(this.setComfort);
     } else {
@@ -132,7 +131,7 @@ class Hotel {
         '---------------------------------------------------------------'
       );
       console.log('Here you can see the list of all our rooms:');
-      spausdinti('Here you can see the list of all our rooms:', 'h3');
+      spausdinti('Here you can see the list of all our rooms:', 'h4');
       this.printRooms();
     }
   }
@@ -168,7 +167,7 @@ class Room {
 
   public printData(
     comfortString: string = 'Comfort level: ', //Stringas, kurį, extend'inus šį metodą į Spa klasę, pakeičiamas kitu.
-    roomName: string = '<<Room>>' //Analogiška, kaip ir comfortString
+    roomName: string = 'Room' //Analogiška, kaip ir comfortString
   ): void {
     console.log(
       '---------------------------------------------------------------'
@@ -219,7 +218,7 @@ class Spa extends Room {
   //Spa kambario duomenų išvedimo į konsole metodas, papildantis Room klasės printData metodą.
 
   public printData(): void {
-    super.printData('SPA confort level: ', '<<SPA>>'); // Pušina abu stringus į Room PrintData kintamuosius ComfortString ir roomName
+    super.printData('SPA confort level: ', 'SPA'); // Pušina abu stringus į Room PrintData kintamuosius ComfortString ir roomName
     console.log('Spa poole size', this.poolSize, 'm2');
     spausdinti('Spa poole size ' + this.poolSize + ' m2');
     console.log('Spa pool temperature', this.poolTemperature, 'oC');
@@ -227,7 +226,7 @@ class Spa extends Room {
   }
 }
 
-const hotel1 = new Hotel('Holiday OUT', 'Šeimyniškių g. 1, Vilnius', 3, 16);
+const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 3, 8);
 
 const room1 = new Room(44, 2);
 hotel1.addRoom(room1);
@@ -235,7 +234,10 @@ hotel1.addRoom(room1);
 const room2 = new Room(20, 3);
 hotel1.addRoom(room2);
 
+const room3 = new Room(30, 3);
+hotel1.addRoom(room3);
+
 const spa1 = new Spa(70, 3, 25, 24);
 hotel1.addRoom(spa1);
 
-hotel1.printData(false);
+hotel1.printData(true);
