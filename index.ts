@@ -41,10 +41,16 @@ Panaudodami TypeScript parašykite programą viešbučių tinklui.
 // HTML KONSTRUKTORIAUS FUNKCIJA
 //------------------------------
 
+function spausdintiHead(tekstas: string, tagas: string = 'p') {
+  const p = document.createElement(tagas);
+  p.textContent = tekstas;
+  document.getElementById('left-column').appendChild(p);
+}
+
 function spausdinti(tekstas: string, tagas: string = 'p') {
   const p = document.createElement(tagas);
   p.textContent = tekstas;
-  document.getElementById('app').appendChild(p);
+  document.getElementById('right-column').appendChild(p);
 }
 
 //-------------------------------
@@ -99,7 +105,7 @@ class Hotel {
 
   public printData(onlyComfort?: boolean): void {
     console.log('Welcome to', this.name);
-    spausdinti('Welcome to ' + this.name, 'h1');
+    spausdintiHead('Welcome to ' + this.name, 'h1');
     console.log('Our address:', this.address);
     spausdinti('Our address: ' + this.address);
     console.log('Our hotel has', this.stars, 'stars');
@@ -232,4 +238,4 @@ hotel1.addRoom(room2);
 const spa1 = new Spa(70, 3, 25, 24);
 hotel1.addRoom(spa1);
 
-hotel1.printData(true);
+hotel1.printData(false);
