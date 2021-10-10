@@ -43,20 +43,20 @@ class Hotel {
   public readonly name: string; //Viešbučio pavadinimas
   public readonly address: string; //Viešbučio adresas
   public readonly stars: number; //Viešbučio vertinimas žvaigždutėmis
-  public readonly onlyComfort: boolean;
-  public readonly miniComfort: number;
+  // public readonly onlyComfort: boolean;
+  // public readonly miniComfort: number;
   public readonly rooms: Room[]; //Viešbučio kambarių masyvas
 
   public constructor(
     name: string,
     address: string,
-    stars: number,
-    onlyComfort: boolean
+    stars: number
+    //onlyComfort: boolean
   ) {
     this.name = name;
     this.address = address;
     this.stars = stars;
-    this.onlyComfort = onlyComfort;
+    //this.onlyComfort = onlyComfort;
     this.rooms = [];
   }
 
@@ -67,6 +67,7 @@ class Hotel {
     this.rooms.push(room);
   }
 
+  // Privatus metodas, atrenkantis kambarius, kurie yra aukstesnes komforto klases nei nurodyta miniComfort kintamajame, ir juos atspausdinantis naudodamas Room klases printData metoda
   private printRooms(miniComfort?: number): void {
     for (let room of this.rooms) {
       if (room.comfort > miniComfort) {
@@ -81,6 +82,7 @@ class Hotel {
     console.log('Our address:', this.address);
     console.log('Our hotel has', this.stars, 'stars');
     console.log('In our hotel we have', this.rooms.length, 'rooms');
+    /* if salyga, kuri atspausdina visus kambarius (this.printRooms(0)) ar tik tuos , kurie yra aukstesnes komforto klases nei nurodyta (this.printRooms(15)). Si klase ijungiama kai onlyComfort yra True.*/
     if (onlyComfort === true) {
       this.printRooms(15);
     } else {
@@ -113,8 +115,8 @@ class Room {
     console.log('-------------------------');
     console.log(roomName);
     console.log('Room number', this.roomNumber + 1);
-    console.log('Room size: ', this.size);
-    console.log('Places in the room: ', this.capacity);
+    console.log('Room size:', this.size, 'm2');
+    console.log('Places in the room:', this.capacity);
     console.log(comfortString, this.comfort);
   }
 }
@@ -140,12 +142,12 @@ class Spa extends Room {
 
   public printData(): void {
     super.printData('SPA confort level:', '<<SPA>>');
-    console.log('Spa poole size', this.poolSize);
-    console.log('Spa pool temperature', this.poolTemperature);
+    console.log('Spa poole size', this.poolSize, 'm2');
+    console.log('Spa pool temperature', this.poolTemperature, 'oC');
   }
 }
 
-const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 3, false);
+const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 3);
 
 const room1 = new Room(44, 2);
 hotel1.addRoom(room1);
@@ -156,7 +158,7 @@ hotel1.addRoom(room2);
 const spa1 = new Spa(45, 3, 25, 24);
 hotel1.addRoom(spa1);
 
-hotel1.printData(false);
+hotel1.printData(true);
 
 /*
 room1.printData();
