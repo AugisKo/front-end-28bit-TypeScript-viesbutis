@@ -31,14 +31,21 @@ class Hotel {
             }
         }
     }
+    starLable() {
+        let star = '';
+        for (let s = 1; s <= this.stars; s++) {
+            star += '⭐';
+        }
+        return star;
+    }
     printData(onlyComfort) {
         console.log('Welcome to', this.name);
-        spausdintiHead('Welcome to ' + this.name, 'h1');
         console.log('Our address:', this.address);
-        spausdintiHead(this.address);
-        console.log(this.stars, 'stars');
-        spausdintiHead('Our hotel has ' + this.stars + ' stars.');
+        console.log('Our hotel has:', this.stars, 'stars');
         console.log('In our hotel we have', this.rooms.length, 'rooms');
+        spausdintiHead('Welcome to ' + this.name, 'h1');
+        spausdintiHead(this.starLable());
+        spausdintiHead(this.address, 'h5');
         if (onlyComfort === true) {
             console.log('---------------------------------------------------------------');
             console.log('Below you will find the list of our most comfortable rooms:');
@@ -93,13 +100,15 @@ class Spa extends Room {
         spausdinti('Spa pool temperature ' + this.poolTemperature + ' oC');
     }
 }
-const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 3, 8);
+const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 4, 15);
 const room1 = new Room(44, 2);
 hotel1.addRoom(room1);
 const room2 = new Room(20, 3);
 hotel1.addRoom(room2);
 const room3 = new Room(30, 3);
 hotel1.addRoom(room3);
+const room4 = new Room(15, 2);
+hotel1.addRoom(room4);
 const spa1 = new Spa(70, 3, 25, 24);
 hotel1.addRoom(spa1);
 hotel1.printData(true);

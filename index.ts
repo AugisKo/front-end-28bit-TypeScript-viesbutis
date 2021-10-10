@@ -101,16 +101,25 @@ class Hotel {
     }
   }
 
+  public starLable(): string {
+    let star = '';
+    for (let s = 1; s <= this.stars; s++) {
+      star += '⭐';
+    }
+    return star;
+  }
+
   //Metodas, spausdinantis pagrindinę informaciją apie viešbutį
 
   public printData(onlyComfort?: boolean): void {
     console.log('Welcome to', this.name);
-    spausdintiHead('Welcome to ' + this.name, 'h1');
     console.log('Our address:', this.address);
-    spausdintiHead(this.address);
-    console.log(this.stars, 'stars');
-    spausdintiHead('Our hotel has ' + this.stars + ' stars.');
+    console.log('Our hotel has:', this.stars, 'stars');
     console.log('In our hotel we have', this.rooms.length, 'rooms');
+
+    spausdintiHead('Welcome to ' + this.name, 'h1');
+    spausdintiHead(this.starLable());
+    spausdintiHead(this.address, 'h5');
 
     /* if salyga, kuri atspausdina visus kambarius (this.printRooms(0)) ar tik tuos, kurie yra aukstesnes komforto klases nei nurodyta kintamajame this.setComfort ir imestame i (this.printRooms(this.setComfort)). Si klase ijungiama kai onlyComfort yra True.*/
 
@@ -219,6 +228,7 @@ class Spa extends Room {
 
   public printData(): void {
     super.printData('SPA confort level: ', 'SPA'); // Pušina abu stringus į Room PrintData kintamuosius ComfortString ir roomName
+
     console.log('Spa poole size', this.poolSize, 'm2');
     spausdinti('Spa poole size ' + this.poolSize + ' m2');
     console.log('Spa pool temperature', this.poolTemperature, 'oC');
@@ -226,7 +236,7 @@ class Spa extends Room {
   }
 }
 
-const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 3, 8);
+const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 4, 15);
 
 const room1 = new Room(44, 2);
 hotel1.addRoom(room1);
@@ -236,6 +246,9 @@ hotel1.addRoom(room2);
 
 const room3 = new Room(30, 3);
 hotel1.addRoom(room3);
+
+const room4 = new Room(15, 2);
+hotel1.addRoom(room4);
 
 const spa1 = new Spa(70, 3, 25, 24);
 hotel1.addRoom(spa1);
