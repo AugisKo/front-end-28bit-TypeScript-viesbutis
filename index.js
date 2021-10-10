@@ -100,7 +100,7 @@ class Spa extends Room {
         spausdinti('Spa pool temperature ' + this.poolTemperature + ' oC');
     }
 }
-const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 3, 8);
+const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 5, 14);
 const room1 = new Room(44, 2);
 hotel1.addRoom(room1);
 const room2 = new Room(20, 3);
@@ -111,4 +111,12 @@ const room4 = new Room(15, 2);
 hotel1.addRoom(room4);
 const spa1 = new Spa(70, 3, 25, 24);
 hotel1.addRoom(spa1);
-hotel1.printData(true);
+hotel1.printData(false);
+const form = document.querySelector('#myform');
+form.onsubmit = () => {
+    const formData = new FormData(form);
+    console.log(formData);
+    const text = formData.get('textInput');
+    console.log(text);
+    return false;
+};

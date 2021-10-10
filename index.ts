@@ -258,7 +258,7 @@ class Spa extends Room {
 //Objektų kurimas
 
 //hotel1 priskiriamos viešbučio pavadinimo, adreso, žvaigždučių kiekio ir minimalaus komforto reikšmės
-const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 3, 8);
+const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 5, 14);
 
 //room.. priskiriamos kambario dydžio kvadratiniais metrais ir vietų skaičiaus reikšmės
 const room1 = new Room(44, 2);
@@ -279,4 +279,16 @@ const spa1 = new Spa(70, 3, 25, 24);
 hotel1.addRoom(spa1);
 
 //atspausdinama visa viešbučio hotel1 informacija pasinaudojant Hotel printData metodu į jį perduodant true arba false, kur true parodo norą matyti tik minimalaus komforto lygį atitinkančių ar viršijančių kambarių sąrašą.
-hotel1.printData(true);
+hotel1.printData(false);
+
+//----------------------------------------------------------------
+const form: HTMLFormElement = document.querySelector('#myform');
+
+form.onsubmit = () => {
+  const formData = new FormData(form);
+
+  console.log(formData);
+  const text = formData.get('textInput') as string;
+  console.log(text);
+  return false; // prevent reload
+};

@@ -16,7 +16,8 @@ body * {
   filter: blur(0px);
 }
 
-#container {
+#container,
+.container {
   display: inline-block;
   width: 800px;
   position: absolute;
@@ -25,7 +26,8 @@ body * {
   transform: translate(-50%, -50%);
 }
 
-#left-column {
+#left-column,
+.left-column {
   width: 40%;
   float: left;
   padding: 40px;
@@ -41,7 +43,8 @@ body * {
   bottom: 30px;
 }
 
-#right-column {
+#right-column,
+.left-column {
   float: right;
   width: 60%;
   padding: 20px;
@@ -71,4 +74,19 @@ h4 {
 h5 {
   font-weight: normal;
   margin-block-start: 1.7em;
+}
+
+.form-row > span {
+  float: left;
+  line-height: 20px;
+  padding: 11px;
+}
+
+.form-row > a {
+  float: left;
+  text-decoration: none;
+
+  line-height: 20px;
+  padding: 11px;
+  color: #015cda;
 }
