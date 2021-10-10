@@ -101,8 +101,9 @@ class Hotel {
     }
   }
 
-  public starLable(): string {
-    let star = '';
+  //Metodas, naudojamas tik Hotel klasėje, kuris sukuria star stringą ir į jį prideda žvaigždučių  kiekį nurodytą this.stars kintamajame
+  private starLable(): string {
+    let star: string = '';
     for (let s = 1; s <= this.stars; s++) {
       star += '⭐';
     }
@@ -112,35 +113,46 @@ class Hotel {
   //Metodas, spausdinantis pagrindinę informaciją apie viešbutį
 
   public printData(onlyComfort?: boolean): void {
+    //Informacija išvedama į konsolę
     console.log('Welcome to', this.name);
     console.log('Our address:', this.address);
     console.log('Our hotel has:', this.stars, 'stars');
     console.log('In our hotel we have', this.rooms.length, 'rooms');
 
+    //Informacija konvertuojama į HTML
     spausdintiHead('Welcome to ' + this.name, 'h1');
     spausdintiHead(this.starLable());
     spausdintiHead(this.address, 'h5');
 
-    /* if salyga, kuri atspausdina visus kambarius (this.printRooms(0)) ar tik tuos, kurie yra aukstesnes komforto klases nei nurodyta kintamajame this.setComfort ir imestame i (this.printRooms(this.setComfort)). Si klase ijungiama kai onlyComfort yra True.*/
+    /* if salyga, kuri atspausdina visus kambarius (this.printRooms()) ar tik tuos, kurie yra aukstesnes komforto klases nei nurodyta kintamajame this.setComfort ir imestame i (this.printRooms(this.setComfort)). Si klase ijungiama kai onlyComfort yra True.*/
 
     if (onlyComfort === true) {
+      //Informacija išvedama į konsolę
       console.log(
-        '---------------------------------------------------------------'
+        '--------------------------------------------------------------'
       );
       console.log(
         'Below you will find the list of our most comfortable rooms:'
       );
+
+      //Informacija konvertuojama į HTML
       spausdinti(
         'Below you will find the list of our most comfortable rooms:',
         'h4'
       );
+
       this.printRooms(this.setComfort);
     } else {
+      //Informacija išvedama į konsolę
       console.log(
         '---------------------------------------------------------------'
       );
       console.log('Here you can see the list of all our rooms:');
+
+      //Informacija konvertuojama į HTML
       spausdinti('Here you can see the list of all our rooms:', 'h4');
+
+      //Iškviečia privatų metodą printRooms()
       this.printRooms();
     }
   }
@@ -178,18 +190,21 @@ class Room {
     comfortString: string = 'Comfort level: ', //Stringas, kurį, extend'inus šį metodą į Spa klasę, pakeičiamas kitu.
     roomName: string = 'Room' //Analogiška, kaip ir comfortString
   ): void {
+    //Informacija išvedama į konsolę
     console.log(
       '---------------------------------------------------------------'
     );
     console.log(roomName);
-    spausdinti(roomName, 'h4');
     console.log('Room number', this.roomNumber + 1);
-    spausdinti('Room number ' + (this.roomNumber + 1));
     console.log('Room size:', this.size, 'm2');
-    spausdinti('Room size: ' + this.size + ' m2');
     console.log('Places in the room:', this.capacity);
-    spausdinti('Places in the room: ' + this.capacity);
     console.log(comfortString, this.comfort); //comfortString paduodamas kaip metodo kintamasis
+
+    //Informacija konvertuojama į HTML
+    spausdinti(roomName, 'h4');
+    spausdinti('Room number ' + (this.roomNumber + 1));
+    spausdinti('Room size: ' + this.size + ' m2');
+    spausdinti('Places in the room: ' + this.capacity);
     spausdinti(comfortString + this.comfort);
   }
 }
@@ -201,8 +216,8 @@ class Spa extends Room {
   //Spa klasės atributai ir konstruktorius. Dalis atributų atkeliauja iš klasės Room.
   //----------------------------------------------------------------------------------
 
-  public readonly poolSize: number;
-  public readonly poolTemperature: number;
+  public readonly poolSize: number; //Baseino dydis
+  public readonly poolTemperature: number; //Vandens temperatūra baseine
 
   public constructor(
     size: number,
@@ -229,16 +244,25 @@ class Spa extends Room {
   public printData(): void {
     super.printData('SPA confort level: ', 'SPA'); // Pušina abu stringus į Room PrintData kintamuosius ComfortString ir roomName
 
+    //Informacija išvedama į konsolę
     console.log('Spa poole size', this.poolSize, 'm2');
-    spausdinti('Spa poole size ' + this.poolSize + ' m2');
     console.log('Spa pool temperature', this.poolTemperature, 'oC');
+
+    //Informacija konvertuojama į HTML
+    spausdinti('Spa poole size ' + this.poolSize + ' m2');
     spausdinti('Spa pool temperature ' + this.poolTemperature + ' oC');
   }
 }
 
+//------------------------------
+//Objektų kurimas
+
+//hotel1 priskiriamos viešbučio pavadinimo, adreso, žvaigždučių kiekio ir minimalaus komforto reikšmės
 const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 3, 8);
 
+//room.. priskiriamos kambario dydžio kvadratiniais metrais ir vietų skaičiaus reikšmės
 const room1 = new Room(44, 2);
+//kambarys room1 įtraukiamas į hotel1 kambarių masyvą
 hotel1.addRoom(room1);
 
 const room2 = new Room(20, 3);
@@ -250,7 +274,9 @@ hotel1.addRoom(room3);
 const room4 = new Room(15, 2);
 hotel1.addRoom(room4);
 
+//spa.. priskiriamos kambario dydžio kvadratiniais metrais, vietų skaičiaus, baseino dydžio kvadratiniais metrais ir vandens temperatūros reikšmės
 const spa1 = new Spa(70, 3, 25, 24);
 hotel1.addRoom(spa1);
 
+//atspausdinama visa viešbučio hotel1 informacija pasinaudojant Hotel printData metodu į jį perduodant true arba false, kur true parodo norą matyti tik minimalaus komforto lygį atitinkančių ar viršijančių kambarių sąrašą.
 hotel1.printData(true);

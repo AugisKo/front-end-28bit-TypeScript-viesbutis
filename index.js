@@ -47,7 +47,7 @@ class Hotel {
         spausdintiHead(this.starLable());
         spausdintiHead(this.address, 'h5');
         if (onlyComfort === true) {
-            console.log('---------------------------------------------------------------');
+            console.log('--------------------------------------------------------------');
             console.log('Below you will find the list of our most comfortable rooms:');
             spausdinti('Below you will find the list of our most comfortable rooms:', 'h4');
             this.printRooms(this.setComfort);
@@ -72,14 +72,14 @@ class Room {
     printData(comfortString = 'Comfort level: ', roomName = 'Room') {
         console.log('---------------------------------------------------------------');
         console.log(roomName);
-        spausdinti(roomName, 'h4');
         console.log('Room number', this.roomNumber + 1);
-        spausdinti('Room number ' + (this.roomNumber + 1));
         console.log('Room size:', this.size, 'm2');
-        spausdinti('Room size: ' + this.size + ' m2');
         console.log('Places in the room:', this.capacity);
-        spausdinti('Places in the room: ' + this.capacity);
         console.log(comfortString, this.comfort);
+        spausdinti(roomName, 'h4');
+        spausdinti('Room number ' + (this.roomNumber + 1));
+        spausdinti('Room size: ' + this.size + ' m2');
+        spausdinti('Places in the room: ' + this.capacity);
         spausdinti(comfortString + this.comfort);
     }
 }
@@ -95,8 +95,8 @@ class Spa extends Room {
     printData() {
         super.printData('SPA confort level: ', 'SPA');
         console.log('Spa poole size', this.poolSize, 'm2');
-        spausdinti('Spa poole size ' + this.poolSize + ' m2');
         console.log('Spa pool temperature', this.poolTemperature, 'oC');
+        spausdinti('Spa poole size ' + this.poolSize + ' m2');
         spausdinti('Spa pool temperature ' + this.poolTemperature + ' oC');
     }
 }
