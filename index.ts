@@ -236,7 +236,7 @@ class Spa extends Room {
   }
 }
 
-const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 4, 15);
+const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 3, 8);
 
 const room1 = new Room(44, 2);
 hotel1.addRoom(room1);

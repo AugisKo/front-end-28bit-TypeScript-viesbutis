@@ -100,7 +100,7 @@ class Spa extends Room {
         spausdinti('Spa pool temperature ' + this.poolTemperature + ' oC');
     }
 }
-const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 4, 15);
+const hotel1 = new Hotel('Holiday Inn', 'Šeimyniškių g. 1, Vilnius', 3, 8);
 const room1 = new Room(44, 2);
 hotel1.addRoom(room1);
 const room2 = new Room(20, 3);
