@@ -82,9 +82,9 @@ class Hotel {
     console.log('Our hotel has', this.stars, 'stars');
     console.log('In our hotel we have', this.rooms.length, 'rooms');
     if (onlyComfort === true) {
-      console.log(this.printRooms(15));
+      this.printRooms(15);
     } else {
-      console.log(this.printRooms(0));
+      this.printRooms(0);
     }
   }
 }
@@ -106,13 +106,16 @@ class Room {
     return parseFloat((this.size / this.capacity).toFixed(2));
   }
 
-  public printData(confortString: string = 'Comfort level: '): void {
+  public printData(
+    comfortString: string = 'Comfort level: ',
+    roomName: string = '<<Room>>'
+  ): void {
     console.log('-------------------------');
-    console.log('<<Room>>');
+    console.log(roomName);
     console.log('Room number', this.roomNumber + 1);
     console.log('Room size: ', this.size);
     console.log('Places in the room: ', this.capacity);
-    console.log(confortString, this.comfort);
+    console.log(comfortString, this.comfort);
   }
 }
 
@@ -136,7 +139,7 @@ class Spa extends Room {
   }
 
   public printData(): void {
-    super.printData('SPA confort level:');
+    super.printData('SPA confort level:', '<<SPA>>');
     console.log('Spa poole size', this.poolSize);
     console.log('Spa pool temperature', this.poolTemperature);
   }
