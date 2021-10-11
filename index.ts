@@ -298,3 +298,4 @@ form.onsubmit = () => {
   hotel1.printData(false);
  
 };
+*/
