@@ -112,11 +112,3 @@ hotel1.addRoom(room4);
 const spa1 = new Spa(70, 3, 25, 24);
 hotel1.addRoom(spa1);
 hotel1.printData(false);
-const form = document.querySelector('#myform');
-form.onsubmit = () => {
-    const formData = new FormData(form);
-    console.log(formData);
-    const hotelname = formData.get('hotelname');
-    console.log(hotelname);
-    return false;
-};

@@ -280,7 +280,7 @@ hotel1.addRoom(spa1);
 
 //atspausdinama visa viešbučio hotel1 informacija pasinaudojant Hotel printData metodu į jį perduodant true arba false, kur true parodo norą matyti tik minimalaus komforto lygį atitinkančių ar viršijančių kambarių sąrašą.
 hotel1.printData(false);
-
+/*
 //----------------------------------------------------------------
 const form: HTMLFormElement = document.querySelector('#myform');
 
@@ -289,7 +289,12 @@ form.onsubmit = () => {
 
   console.log(formData);
   const hotelname = formData.get('hotelname') as string;
-  console.log(hotelname);
+  const address = formData.get('address') as string;
+  const stars = formData.get('stars') as any;
+  const comfortLevel = formData.get('comfortLevel') as any;
 
-  return false; // prevent reload
+  const hotel1 = new Hotel(hotelname, address, stars, comfortLevel);
+
+  hotel1.printData(false);
+ 
 };
