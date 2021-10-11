@@ -116,7 +116,7 @@ const form = document.querySelector('#myform');
 form.onsubmit = () => {
     const formData = new FormData(form);
     console.log(formData);
-    const text = formData.get('textInput');
-    console.log(text);
+    const hotelname = formData.get('hotelname');
+    console.log(hotelname);
     return false;
 };

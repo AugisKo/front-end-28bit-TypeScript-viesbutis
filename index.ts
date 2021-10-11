@@ -288,7 +288,8 @@ form.onsubmit = () => {
   const formData = new FormData(form);
 
   console.log(formData);
-  const text = formData.get('textInput') as string;
-  console.log(text);
+  const hotelname = formData.get('hotelname') as string;
+  console.log(hotelname);
+
   return false; // prevent reload
 };

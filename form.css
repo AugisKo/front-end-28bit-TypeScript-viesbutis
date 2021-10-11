@@ -1,3 +1,93 @@
+body,
+body * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+}
+
+.background {
+  height: 100vh;
+  background-image: url('img/HolidayInn.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(0px);
+}
+
+.container {
+  display: inline-block;
+  width: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.left-column {
+  width: 40%;
+  float: left;
+  padding: 40px;
+  color: #fff;
+  background-color: #31994b90;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-size: cover;
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+}
+
+.right-column {
+  float: right;
+  width: 60%;
+  padding: 20px;
+  padding-left: 60px;
+  padding-right: 60px;
+  background-color: #ffffff99;
+  position: relative;
+  border-radius: 10px;
+  height: 600px;
+}
+
+.close {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  text-align: center;
+  line-height: 54px;
+  top: 0;
+  right: 0;
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(187, 182, 182);
+}
+
+.form-row > span {
+  float: left;
+  line-height: 20px;
+  padding: 11px;
+}
+
+.form-row > a {
+  float: left;
+  text-decoration: none;
+
+  line-height: 20px;
+  padding: 11px;
+  color: #015cda;
+}
+
+.form-row > a:hover {
+}
+
 .form {
   display: inline-block;
   width: 100%;
@@ -8,6 +98,12 @@
   width: 100%;
 }
 
+#stars,
+#comfortLevel {
+  display: inline-block;
+  width: 45%;
+}
+
 .form-row + .form-row {
   margin-top: 40px;
 }
@@ -15,10 +111,10 @@
 label {
   display: inline-block;
   width: 100%;
-  color: grey;
+  color: rgb(77, 73, 73);
   text-transform: uppercase;
   font-weight: normal;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 15px;
 }
 
@@ -37,7 +133,7 @@ input:focus-visible {
 }
 
 input:focus {
-  background-color: yellow;
+  background-color: rgba(39, 180, 114, 0.473);
   color: white;
 }
 
@@ -51,13 +147,13 @@ button {
   color: white;
   padding: 10px 30px;
   line-height: 20px;
-  font-size: 19px;
+  font-size: 15px;
   border-radius: 21px;
-  border: 1px solid #0045a7;
-  background-color: #015cda;
+  border: 1px solid #055323;
+  background-color: #3a8340;
 }
 
 button:hover {
-  background-color: blueviolet;
+  background-color: rgb(6, 105, 39);
   cursor: pointer;
 }
